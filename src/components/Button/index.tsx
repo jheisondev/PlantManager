@@ -3,6 +3,7 @@ import React from 'react';
 import { TouchableOpacity, Text, StyleSheet, TouchableOpacityProps } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'
 import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 
 interface Props extends TouchableOpacityProps {
   title?: string;
@@ -29,14 +30,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     borderRadius: 8,
-    paddingHorizontal: 20,
-    paddingVertical: 16,
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    height: 56,
   },
   title: {
-    fontWeight: 'bold',
     fontSize: 18,
     color: '#fff',
     textAlignVertical: 'center',
+    fontFamily: fonts.text,
   },
 });
 

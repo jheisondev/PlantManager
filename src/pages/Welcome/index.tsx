@@ -1,25 +1,35 @@
 import React, { useState } from 'react';
 
-import { SafeAreaView, Text, StyleSheet, Platform } from 'react-native';
+import { SafeAreaView, Dimensions, Text, StyleSheet, Platform } from 'react-native';
 import Lottie from 'lottie-react-native';
 import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 import { Button } from '../../components/Button';
+import { useNavigation } from '@react-navigation/core';
 export const Welcome: React.FC = () => {
-  const [] = useState(false);
+  const navigation = useNavigation();
+
+  const handleStart = () => {
+    navigation.navigate('SignIn');
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>
-        {`Gerencie\nsuas plantas\nde forma fácil`}
+        {`Gerencie\nsuas plantas de\nforma fácil`}
       </Text>
 
-      <Lottie source={require('../../assets/plant.json')} autoPlay loop style={styles.plant} />
+      <Lottie resizeMode="contain" source={require('../../assets/plant.json')} autoPlay loop style={styles.plant} />
 
       <Text style={styles.subTitle}>
         Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você
         sempre que precisar.
       </Text>
 
-      <Button title="Regar plantas" />
+      <Button
+        title="Regar plantas"
+        onPress={handleStart}
+      />
     </SafeAreaView>
   );
 }
@@ -27,27 +37,28 @@ export const Welcome: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
     paddingBottom: Platform.OS === 'ios' ? 0 : 38,
   },
   title: {
-    fontWeight: 'bold',
-    fontSize: 32,
+    fontSize: 28,
     color: colors.heading,
     textAlign: 'center',
     marginTop: 38,
+    fontFamily: fonts.heading,
+    lineHeight: 34,
   },
   subTitle: {
     fontSize: 18,
     color: colors.heading,
     textAlign: 'center',
     paddingHorizontal: 20,
+    fontFamily: fonts.text,
   },
-
   plant: {
     marginBottom: 10,
-    height: 284,
+    height: Dimensions.get('window').width * 0.7,
     width: 292,
     position: 'relative',
   },
