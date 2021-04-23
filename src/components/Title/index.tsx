@@ -5,13 +5,14 @@ import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
 interface Props {
-  title?: string;
+  title: string;
+  isLeft?: boolean;
 }
 
-export const Title: React.FC<Props> = ({ title }) => {
+export const Title: React.FC<Props> = ({ title, isLeft }) => {
   return (
-    <Text style={styles.title}>
-      {title}
+    <Text style={[styles.title, isLeft && { textAlign: 'left' }]}>
+      {`${title.substring(0, 20)}...`}
     </Text>
   );
 }

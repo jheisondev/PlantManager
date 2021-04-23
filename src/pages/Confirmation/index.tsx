@@ -1,13 +1,21 @@
 import React from 'react';
 
 import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/core';
+
 import Lottie from 'lottie-react-native';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
+
 import { Button } from '../../components/Button';
 import { Title } from '../../components/Title';
 
 export const Confirmation: React.FC = () => {
+  const navigation = useNavigation();
+
+  const handlePlants = () => {
+    navigation.navigate('PlantSelect');
+  }
   return (
     <SafeAreaView style={styles.container}>
 
@@ -16,7 +24,7 @@ export const Confirmation: React.FC = () => {
       <Title title="Prontinho" />
       <Text style={styles.subTitle}>Agora vamos começar cuidar das suas plantinhas com muito carinho.</Text>
 
-      <Button title="Confirmar" />
+      <Button title="Confirmar" onPress={handlePlants} />
     </SafeAreaView>
   );
 }
